@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import pl.dawid.yourmotobudget.R;
+
 public class List1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

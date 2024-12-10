@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego.data.ContactDatabase;
 import pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego.data.User;
+import pl.dawid.yourmotobudget.R;
 
 public class Create extends AppCompatActivity {
     @Override

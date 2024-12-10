@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import pl.dawid.yourmotobudget.R;
+
 public class List3_1 extends AppCompatActivity {
 
     private LinearLayout dynamicFieldsContainer;

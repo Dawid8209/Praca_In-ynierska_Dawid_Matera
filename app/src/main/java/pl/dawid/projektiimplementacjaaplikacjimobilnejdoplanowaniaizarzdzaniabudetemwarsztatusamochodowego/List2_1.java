@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import pl.dawid.yourmotobudget.R;
+
 public class List2_1 extends AppCompatActivity {
 
     @Override
