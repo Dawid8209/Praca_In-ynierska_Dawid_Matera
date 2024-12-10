@@ -152,7 +152,37 @@ public class List3_1 extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             File photoFile = new File(currentPhotoPath);
-            photoNameTextView.setText(photoFile.getName()); // Wyświetlanie nazwy zdjęcia
+
+            if (photoFile.exists()) { // Sprawdzenie, czy plik istnieje
+                // Załaduj zdjęcie w odpowiednim rozmiarze
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 4; // Skaluje obraz, zmniejszając zużycie pamięci
+                Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+
+                if (bitmap != null) {
+                    // Dodaj nowe ImageView do kontenera
+                    LinearLayout photoContainer = findViewById(R.id.photoContainer);
+                    ImageView newPhotoView = new ImageView(this);
+
+                    // Ustaw właściwości nowego ImageView
+                    newPhotoView.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT));
+                    newPhotoView.setImageBitmap(bitmap);
+                    newPhotoView.setAdjustViewBounds(true);
+                    newPhotoView.setPadding(0, 16, 0, 16); // Odstępy między zdjęciami
+
+                    // Dodaj ImageView do kontenera
+                    photoContainer.addView(newPhotoView);
+
+                    // Opcjonalne logowanie
+                    Log.d("PhotoAdded", "Dodano zdjęcie: " + photoFile.getName());
+                } else {
+                    Log.e("Error", "Nie udało się załadować bitmapy.");
+                }
+            } else {
+                Log.e("Error", "Plik zdjęcia nie istnieje: " + currentPhotoPath);
+            }
         }
     }
 
