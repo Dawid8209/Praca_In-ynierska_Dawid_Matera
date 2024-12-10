@@ -1,4 +1,4 @@
-package pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego;
+package pl.dawid.yourmotobudget;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,11 @@ import java.util.Locale;
 
 import pl.dawid.yourmotobudget.R;
 
-public class List4 extends AppCompatActivity {
+public class List1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list4);
+        setContentView(R.layout.list1);
 
         TextView currentDateText = findViewById(R.id.dataText);
 
@@ -29,7 +29,16 @@ public class List4 extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List4.this, BookMarks.class);
+                Intent intent = new Intent(List1.this, BookMarks.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonAddJobButton = findViewById(R.id.addButton);
+        buttonAddJobButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(List1.this, List1_1.class);
                 startActivity(intent);
             }
         });

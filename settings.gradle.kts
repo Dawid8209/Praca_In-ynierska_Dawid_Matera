@@ -19,7 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name =
-    "ProjektIImplementacjaAplikacjiMobilnejDoPlanowaniaIZarządzaniaBudżetemWarsztatuSamochodowego"
+rootProject.name = "YourMotoBudget"
 include(":app")
  

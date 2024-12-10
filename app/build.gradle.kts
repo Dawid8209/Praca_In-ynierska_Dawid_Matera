@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace =
-        "pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego"
+        "pl.dawid.yourmotobudget"
     compileSdk = 34
 
     defaultConfig {
         applicationId =
-            "pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego"
+            "pl.dawid.yourmotobudget"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

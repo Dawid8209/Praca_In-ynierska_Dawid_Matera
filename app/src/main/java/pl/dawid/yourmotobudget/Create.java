@@ -1,4 +1,4 @@
-package pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego;
+package pl.dawid.yourmotobudget;
 
 import android.os.Bundle;
 import android.view.View;
@@ -14,9 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego.data.ContactDatabase;
-import pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego.data.User;
-import pl.dawid.yourmotobudget.R;
+import pl.dawid.yourmotobudget.data.ContactDatabase;
+import pl.dawid.yourmotobudget.data.User;
 
 public class Create extends AppCompatActivity {
     @Override

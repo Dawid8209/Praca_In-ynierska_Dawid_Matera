@@ -1,4 +1,4 @@
-package pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego;
+package pl.dawid.yourmotobudget;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import pl.dawid.yourmotobudget.R;
-
-public class List5 extends AppCompatActivity {
+public class List4 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list5);
+        setContentView(R.layout.list4);
 
         TextView currentDateText = findViewById(R.id.dataText);
 
@@ -29,7 +27,7 @@ public class List5 extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List5.this, BookMarks.class);
+                Intent intent = new Intent(List4.this, BookMarks.class);
                 startActivity(intent);
             }
         });
