@@ -1,4 +1,4 @@
-package pl.dawid.projektiimplementacjaaplikacjimobilnejdoplanowaniaizarzdzaniabudetemwarsztatusamochodowego;
+package pl.dawid.yourmotobudget;
 
 import org.junit.Test;
 
