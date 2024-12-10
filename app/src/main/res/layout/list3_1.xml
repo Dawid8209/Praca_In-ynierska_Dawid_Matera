@@ -255,30 +255,38 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="2dp"/>
 
-        <TextView
-            android:id="@+id/photoNameTextView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Brak zdjęcia"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <!-- Przycisk do zrobienia zdjęcia -->
-        <Button
-            android:id="@+id/takePhotoButton"
-            android:layout_width="230dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_edittext"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="15dp"
-            android:textSize="23dp"
-            android:text="Dodaj zdjęcie"
-            android:textColor="@android:color/white" />
+            <!-- Wyświetlanie nazwy zdjęcia -->
+            <TextView
+                android:id="@+id/photoNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brak zdjęcia"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp" />
 
+            <!-- Przycisk do zrobienia zdjęcia -->
+            <Button
+                android:id="@+id/takePhotoButton"
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="15dp"
+                android:textSize="23dp"
+                android:text="Dodaj zdjęcie"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="70dp"
