@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitCenter"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/dateHeader"
+            layout="@layout/date_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/myImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/burning_wheel" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/signature1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imię i nazwisko klienta:"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/signature1.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:paddingLeft="20px"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/signature2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nr rejestracyjny pojazdu:"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/signature2.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:paddingLeft="20px"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/signature3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nr vin pojazdu:"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/signature3.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:paddingLeft="20px"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/signature4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Do zrobienia:"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp" />
+
+            <EditText
+                android:id="@+id/signature4.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:paddingLeft="20px"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="2dp"
+                android:minLines="1"
+                android:maxLines="5"
+                android:scrollHorizontally="false"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:overScrollMode="never"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/signature5a"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="Zakupione części:"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/signature5b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cena:"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dynamicContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/signature5.1a"
+                            android:layout_width="520px"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edittext"
+                            android:layout_gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="30sp"
+                            android:paddingLeft="20px"
+                            android:layout_marginStart="24px"
+                            android:layout_marginEnd="16px"
+                            android:minLines="1"
+                            android:maxLines="5"
+                            android:scrollHorizontally="false"
+                            android:inputType="textMultiLine"
+                            android:gravity="top|start"
+                            android:overScrollMode="never" />
+
+                        <EditText
+                            android:id="@+id/signature5.1b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edittext"
+                            android:layout_gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="30sp"
+                            android:paddingLeft="20px"
+                            android:layout_marginStart="16px"
+                            android:layout_marginEnd="24px" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dynamicFieldsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addItemButton"
+                    android:layout_width="230dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="23dp"
+                    android:text="Dodaj części"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        <TextView
+            android:id="@+id/signature6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Łączna kwota za roboczogodziny:"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/signature6.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:paddingLeft="20px"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="2dp"/>
+
+        <TextView
+            android:id="@+id/photoNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brak zdjęcia"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Przycisk do zrobienia zdjęcia -->
+        <Button
+            android:id="@+id/takePhotoButton"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:textSize="23dp"
+            android:text="Dodaj zdjęcie"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Cofnij"
+                android:textSize="23dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="zapisz"
+                android:textSize="23dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

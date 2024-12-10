@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white"/> <!-- Kolor tła -->
+    <corners android:radius="18dp"/> <!-- Zaokrąglenie rogów (np. 16dp) -->
+    <stroke
+        android:color="@color/black"> <!-- Kolor obramowania-->
+    </stroke>
+</shape>

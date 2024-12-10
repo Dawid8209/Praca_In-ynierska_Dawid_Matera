@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:scaleType="fitCenter"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/dateHeader"
+            layout="@layout/date_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/myImageView"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_gravity="center"
+            android:src="@drawable/burning_wheel" />
+
+        <EditText
+            android:id="@+id/nazwaFirmy"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_gravity="center"
+            android:textColor="#FF000000"
+            android:textSize="30sp"
+            android:hint="Email"
+            android:textColorHint="@color/gray"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/haslo"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_gravity="center"
+            android:textColor="#FF000000"
+            android:textSize="30sp"
+            android:hint="Hasło"
+            android:textColorHint="@color/gray"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPassword" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/createButton"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:text="stwórz konto"
+                android:textSize="23dp"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_edittext"
+                android:layout_gravity="center"
+                android:text="Zaloguj"
+                android:textSize="23dp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
