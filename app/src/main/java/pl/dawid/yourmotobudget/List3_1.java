@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.Manifest;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,12 +22,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.room.Room;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import pl.dawid.yourmotobudget.data.ContactDatabase;
+import pl.dawid.yourmotobudget.data.UserData;
 
 public class List3_1 extends AppCompatActivity {
 
@@ -36,7 +40,10 @@ public class List3_1 extends AppCompatActivity {
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private String currentPhotoPath = "";
-    private TextView photoNameTextView;
+
+    private EditText nameField, plateField, vinField, taskField, buyItemField, priceItemField, priceHourField, totalField;
+    private Button saveButton, backButton;
+    private ContactDatabase database;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -107,11 +114,49 @@ public class List3_1 extends AppCompatActivity {
         }
 
         Button takePhotoButton = findViewById(R.id.takePhotoButton);
-        photoNameTextView = findViewById(R.id.photoNameTextView);
 
         takePhotoButton.setOnClickListener(v -> {
             dispatchTakePictureIntent();
         });
+
+        // Inicjalizacja pól
+        nameField = findViewById(R.id.signature1_1);
+        plateField = findViewById(R.id.signature2_1);
+        vinField = findViewById(R.id.signature3_1);
+        taskField = findViewById(R.id.signature4_1);
+        buyItemField = findViewById(R.id.signature5_1a);
+        priceItemField = findViewById(R.id.signature5_1b);
+        priceHourField = findViewById(R.id.signature6_1);
+
+        saveButton = findViewById(R.id.saveButton);
+        backButton = findViewById(R.id.backButton);
+
+        database = ContactDatabase.getInstance(this);
+
+        // Obsługa kliknięcia przycisku "Zapisz"
+        saveButton.setOnClickListener(v -> saveUserData());
+
+        // Obsługa kliknięcia przycisku "Cofnij"
+        backButton.setOnClickListener(v -> finish());
+    }
+
+    private void saveUserData() {
+        new Thread(() -> {
+            // Utwórz nowy obiekt UserData na podstawie wprowadzonych danych
+            UserData user = new UserData();
+            user.setName(nameField.getText().toString());
+            user.setPlate(plateField.getText().toString());
+            user.setVin(vinField.getText().toString());
+            user.setTask(taskField.getText().toString());
+            user.setBuyItem(buyItemField.getText().toString());
+            user.setPriceItem(priceItemField.getText().toString());
+            user.setPriceHour(priceHourField.getText().toString());
+
+            // Zapisz dane do bazy
+            database.userDataDao().insert(user);
+
+            runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
+        }).start();
     }
 
     private void dispatchTakePictureIntent() {

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="top"
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -42,42 +42,110 @@
                 android:layout_marginEnd="40dp"/>
         </LinearLayout>
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/carRepairShop"
-            android:layout_width="360dp"
-            android:layout_height="75dp"
-            android:background="@drawable/rounded_edittext"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Wydatki na utrzymanie warsztatu"
-            android:textSize="23dp"
-            android:textColor="@color/red"
-            />
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/employeeSalary"
-            android:layout_width="360dp"
-            android:layout_height="75dp"
-            android:background="@drawable/rounded_edittext"
-            android:layout_gravity="center"
-            android:text="Pensje pracowników"
-            android:textSize="23dp"
-            android:textColor="@color/red"
-            />
+            <Button
+                android:id="@+id/carRepairShop"
+                android:layout_width="185dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Dodaj wydatek na utrzymanie warsztatu"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
 
-        <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/orders"
-            android:layout_width="360dp"
-            android:layout_height="75dp"
-            android:background="@drawable/rounded_edittext"
+            <Button
+                android:id="@+id/viewCarRepairShop"
+                android:layout_width="185dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Podgląd na wydatki"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="zlecenia"
-            android:textSize="23dp"
-            android:textColor="@color/red"
-            android:layout_marginBottom="30dp"
-            />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/employeeSalary"
+                android:layout_width="185dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Dodaj pensje"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/viewEmployeeSalary"
+                android:layout_width="185dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Podgląd Pensji"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/orders"
+                android:layout_width="185dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Utwórz zlecenie"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/viewOrders"
+                android:layout_width="185dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_edittext"
+                android:text="Podgląd zlecenia"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/overallProfit"
@@ -88,6 +156,7 @@
             android:text="Zysk ogólny"
             android:textSize="23dp"
             android:textColor="@color/green"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="30dp"
             />
 
@@ -103,7 +172,7 @@
             android:layout_marginBottom="30dp"
             />
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

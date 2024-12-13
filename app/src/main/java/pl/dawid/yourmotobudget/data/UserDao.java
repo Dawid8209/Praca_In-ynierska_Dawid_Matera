@@ -25,4 +25,12 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     User getUserByEmail(String email);
 
+    @Insert
+    void insertUserData(UserData userData);
+
+    @Query("SELECT * FROM user_data WHERE id = :userId")
+    UserData getUserData(int userId);
+
+    @Update
+    void updateUserData(UserData userData);
 }

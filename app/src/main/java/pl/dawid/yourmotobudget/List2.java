@@ -31,14 +31,5 @@ public class List2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Button buttonAddJobButton = findViewById(R.id.addEmpoyeeButton);
-        buttonAddJobButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(List2.this, List2_1.class);
-                startActivity(intent);
-            }
-        });
     }
 }

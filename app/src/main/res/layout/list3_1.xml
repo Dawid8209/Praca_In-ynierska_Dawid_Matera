@@ -177,7 +177,7 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/signature5.1a"
+                            android:id="@+id/signature5_1a"
                             android:layout_width="520px"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_edittext"
@@ -243,7 +243,7 @@
             android:layout_marginBottom="4dp" />
 
         <EditText
-            android:id="@+id/signature6.1"
+            android:id="@+id/signature6_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"

@@ -34,6 +34,14 @@ public class BookMarks extends AppCompatActivity {
         buttonCarRepairShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                Intent intent = new Intent(BookMarks.this, List1_1.class);
+                startActivity(intent);
+            }
+        });
+        Button buttonViewCarRepairShop = findViewById(R.id.viewCarRepairShop);
+        buttonViewCarRepairShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
                 Intent intent = new Intent(BookMarks.this, List1.class);
                 startActivity(intent);
             }
@@ -43,6 +51,14 @@ public class BookMarks extends AppCompatActivity {
         buttonEmployeeSalary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                Intent intent = new Intent(BookMarks.this, List2_1.class);
+                startActivity(intent);
+            }
+        });
+        Button buttonViewEmployeeSalary  = findViewById(R.id.viewEmployeeSalary);
+        buttonViewEmployeeSalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
                 Intent intent = new Intent(BookMarks.this, List2.class);
                 startActivity(intent);
             }
@@ -50,6 +66,14 @@ public class BookMarks extends AppCompatActivity {
 
         Button buttonOrders = findViewById(R.id.orders);
         buttonOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(BookMarks.this, List3_1.class);
+                startActivity(intent);
+            }
+        });
+        Button buttonViewOrders = findViewById(R.id.viewOrders);
+        buttonViewOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(BookMarks.this, List3.class);
