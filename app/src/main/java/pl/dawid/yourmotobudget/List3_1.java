@@ -74,16 +74,7 @@ public class List3_1 extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List3_1.this, List3.class);
-                startActivity(intent);
-            }
-        });
-
-        Button buttonSave = findViewById(R.id.saveButton);
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(List3_1.this, List3.class);
+                Intent intent = new Intent(List3_1.this, BookMarks.class);
                 startActivity(intent);
             }
         });
@@ -145,10 +136,18 @@ public class List3_1 extends AppCompatActivity {
     private void saveUserData() {
         new Thread(() -> {
             String loggedInEmail = getLoggedInEmail();
-            if (loggedInEmail == null) {
-                runOnUiThread(() -> Toast.makeText(this, "Użytkownik nie jest zalogowany!", Toast.LENGTH_SHORT).show());
-                return;
+
+            // Upewnij się, że pola istnieją i nie są puste
+            if (nameField == null || nameField.getText().toString().isEmpty() ||
+                    taskField == null || taskField.getText().toString().isEmpty() ||
+                        priceHourField == null || priceHourField.getText().toString().isEmpty()) {
+
+                runOnUiThread(() ->
+                        Toast.makeText(this, "Uzupełnij wszystkie pola z gwiazdką!", Toast.LENGTH_SHORT).show()
+                );
+                return; // Zakończ, jeśli pola są puste
             }
+
             // Utwórz nowy obiekt UserData na podstawie wprowadzonych danych
             UserData user = new UserData();
             user.setName(nameField.getText().toString());
@@ -162,8 +161,8 @@ public class List3_1 extends AppCompatActivity {
 
             // Zapisz dane do bazy
             database.userDataDao().insert(user);
-
             runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
+
         }).start();
     }
 

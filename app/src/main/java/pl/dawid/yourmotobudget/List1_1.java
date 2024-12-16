@@ -18,7 +18,7 @@ public class List1_1 extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List1_1.this, List1.class);
+                Intent intent = new Intent(List1_1.this, BookMarks.class);
                 startActivity(intent);
             }
         });
@@ -27,7 +27,7 @@ public class List1_1 extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List1_1.this, List1.class);
+                Intent intent = new Intent(List1_1.this, BookMarks.class);
                 startActivity(intent);
             }
         });

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button nextButton = findViewById(R.id.nextButton);
         Button createButton = findViewById(R.id.createButton);
-        EditText nazwaFirmyField = findViewById(R.id.nazwaFirmy);
+        EditText nazwaFirmyField = findViewById(R.id.email);
         EditText hasloField = findViewById(R.id.haslo);
 
         nextButton.setOnClickListener(v -> {

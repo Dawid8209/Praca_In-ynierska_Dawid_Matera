@@ -35,7 +35,7 @@ public class Create extends AppCompatActivity {
         EditText adresField = findViewById(R.id.adres);
         EditText nazwaFirmyField = findViewById(R.id.nazwaFirmy);
         EditText emailField = findViewById(R.id.email);
-        EditText hasloField = findViewById(R.id.hasło);
+        EditText hasloField = findViewById(R.id.haslo);
         EditText powtorzHasloField = findViewById(R.id.powtorzHaslo);
 
         UserViewModel userViewModel = new ViewModelProvider(this).get(UserViewModel.class);

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -65,10 +64,6 @@ public class List3 extends AppCompatActivity {
 
         new Thread(() -> {
             String loggedInUserId = getLoggedInEmail(); // Pobierz ID zalogowanego użytkownika
-            if (loggedInUserId == null) {
-                runOnUiThread(() -> Toast.makeText(this, "Użytkownik nie jest zalogowany!", Toast.LENGTH_SHORT).show());
-                return;
-            }
 
             // Pobierz dane tylko dla zalogowanego użytkownika
             List<UserData> userDataList = database.userDataDao().getUserDataByUserId(loggedInUserId);

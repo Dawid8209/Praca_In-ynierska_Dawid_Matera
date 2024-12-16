@@ -46,14 +46,11 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
         holder.priceHourTextView.setText(userData.getPriceHour());
 
         // Wczytanie obrazu (jeśli istnieje ścieżka)
-        if (userData.getName() != null && !userData.getImagePath().isEmpty()) {
+        if (userData.getImagePath() != null && !userData.getImagePath().isEmpty()) {
             File imgFile = new File(userData.getImagePath());
             if(imgFile.exists()){
                 Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
                 holder.imageView.setImageBitmap(bitmap);
-            } else {
-                Log.e("ImageError", "Plik nie istnieje!");
-                holder.imageView.setImageResource(R.drawable.burning_wheel); // Domyślny obraz
             }
         } else {
             Log.e("ImageError", "Ścieżka jest pusta!");
