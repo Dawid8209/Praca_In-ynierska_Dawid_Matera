@@ -107,6 +107,11 @@ public class BookMarks extends AppCompatActivity {
                 SharedPreferences preferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                 preferences.edit().remove("loggedUserEmail").apply();
 
+                SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("loggedInEmail"); // Usuń zapisane ID użytkownika
+                editor.apply();
+
                 Toast.makeText(BookMarks.this, "Wylogowano", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(BookMarks.this, MainActivity.class);

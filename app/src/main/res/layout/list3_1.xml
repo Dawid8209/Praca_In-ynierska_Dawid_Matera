@@ -262,12 +262,12 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <LinearLayout
-                android:id="@+id/photoContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp" />
+                <LinearLayout
+                    android:id="@+id/photoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp" />
 
             <!-- Przycisk do zrobienia zdjęcia -->
             <Button

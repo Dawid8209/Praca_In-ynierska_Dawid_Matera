@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 User user = db.userDao().getUserByEmail(nazwaFirmy);
 
                 if (user != null && user.getHaslo().equals(haslo)) {
+                    saveLoggedInEmail(user.getEmail());
 
                     SharedPreferences preferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -90,6 +91,28 @@ public class MainActivity extends AppCompatActivity {
             imageView.getLayoutParams().width = 800;
             imageView.getLayoutParams().height = 900;
         }
+    }
+    private void saveLoggedInEmail(String email) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("loggedInEmail", email); // Zapisz ID użytkownika
+        editor.apply();
+    }
+
+    private String getLoggedInEmail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
+    }
+
+    private void logout() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("loggedInUserId"); // Usuń zapisane ID użytkownika
+        editor.apply();
+
+        // Przejdź do ekranu logowania
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 

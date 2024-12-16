@@ -1,18 +1,17 @@
 package pl.dawid.yourmotobudget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,7 +27,6 @@ public class List3 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private UserDataAdapter adapter;
     private ContactDatabase database;
-    private List<UserData> userDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +64,24 @@ public class List3 extends AppCompatActivity {
         }
 
         new Thread(() -> {
-                List<UserData> userDataList = database.userDataDao().getAllUserData();
+            String loggedInUserId = getLoggedInEmail(); // Pobierz ID zalogowanego użytkownika
+            if (loggedInUserId == null) {
+                runOnUiThread(() -> Toast.makeText(this, "Użytkownik nie jest zalogowany!", Toast.LENGTH_SHORT).show());
+                return;
+            }
 
-                // Przykład: Ustaw adapter w głównym wątku
+            // Pobierz dane tylko dla zalogowanego użytkownika
+            List<UserData> userDataList = database.userDataDao().getUserDataByUserId(loggedInUserId);
+
             runOnUiThread(() -> {
-                if (userDataList != null) {
-                    adapter = new UserDataAdapter(userDataList);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    // Obsługuje przypadek, gdy dane nie są dostępne
-                    Log.e("LoadUserData", "Brak danych w bazie.");
-                }
+                adapter = new UserDataAdapter(userDataList);
+                recyclerView.setAdapter(adapter);
             });
         }).start();
+    }
+
+    private String getLoggedInEmail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
     }
 }

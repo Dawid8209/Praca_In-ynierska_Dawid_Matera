@@ -1,6 +1,8 @@
 package pl.dawid.yourmotobudget;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,13 +24,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.room.Room;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import pl.dawid.yourmotobudget.data.ContactDatabase;
@@ -36,12 +36,12 @@ import pl.dawid.yourmotobudget.data.UserData;
 
 public class List3_1 extends AppCompatActivity {
 
-    private LinearLayout dynamicFieldsContainer;
+    private LinearLayout dynamicFieldsContainer, priceImagePath;
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private String currentPhotoPath = "";
 
-    private EditText nameField, plateField, vinField, taskField, buyItemField, priceItemField, priceHourField, totalField;
+    private EditText nameField, plateField, vinField, taskField, buyItemField, priceItemField, priceHourField;
     private Button saveButton, backButton;
     private ContactDatabase database;
 
@@ -64,6 +64,7 @@ public class List3_1 extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +128,7 @@ public class List3_1 extends AppCompatActivity {
         buyItemField = findViewById(R.id.signature5_1a);
         priceItemField = findViewById(R.id.signature5_1b);
         priceHourField = findViewById(R.id.signature6_1);
+        priceImagePath = findViewById(R.id.photoContainer);
 
         saveButton = findViewById(R.id.saveButton);
         backButton = findViewById(R.id.backButton);
@@ -142,6 +144,11 @@ public class List3_1 extends AppCompatActivity {
 
     private void saveUserData() {
         new Thread(() -> {
+            String loggedInEmail = getLoggedInEmail();
+            if (loggedInEmail == null) {
+                runOnUiThread(() -> Toast.makeText(this, "Użytkownik nie jest zalogowany!", Toast.LENGTH_SHORT).show());
+                return;
+            }
             // Utwórz nowy obiekt UserData na podstawie wprowadzonych danych
             UserData user = new UserData();
             user.setName(nameField.getText().toString());
@@ -151,12 +158,18 @@ public class List3_1 extends AppCompatActivity {
             user.setBuyItem(buyItemField.getText().toString());
             user.setPriceItem(priceItemField.getText().toString());
             user.setPriceHour(priceHourField.getText().toString());
+            user.setEmail(loggedInEmail);
 
             // Zapisz dane do bazy
             database.userDataDao().insert(user);
 
             runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
         }).start();
+    }
+
+    private String getLoggedInEmail() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
     }
 
     private void dispatchTakePictureIntent() {

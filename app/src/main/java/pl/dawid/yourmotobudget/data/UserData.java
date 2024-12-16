@@ -16,6 +16,8 @@ public class UserData {
     private String buyItem;
     private String priceItem;
     private String priceHour;
+    private String email;
+    private String imagePath;
 
     // Konstruktor, gettery i settery
         public UserData() {
@@ -84,5 +86,21 @@ public class UserData {
 
     public void setPriceHour(String priceHour) {
         this.priceHour = priceHour;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

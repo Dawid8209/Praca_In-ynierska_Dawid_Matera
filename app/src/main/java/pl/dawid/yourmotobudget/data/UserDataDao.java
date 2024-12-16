@@ -14,6 +14,10 @@ public interface UserDataDao {
     @Insert
     void insert(UserData userData);
 
+    @Query("SELECT * FROM user_data WHERE email = :email")
+    List<UserData> getUserDataByUserId(String email);
+
+
     @Update
     void update(UserData userData);
 
