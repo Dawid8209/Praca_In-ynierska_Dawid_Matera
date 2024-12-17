@@ -72,6 +72,7 @@ public class BookMarks extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Button buttonViewOrders = findViewById(R.id.viewOrders);
         buttonViewOrders.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,7 +28,9 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import pl.dawid.yourmotobudget.data.ContactDatabase;
@@ -36,7 +38,7 @@ import pl.dawid.yourmotobudget.data.UserData;
 
 public class List3_1 extends AppCompatActivity {
 
-    private LinearLayout dynamicFieldsContainer, priceImagePath;
+    private LinearLayout dynamicFieldsContainer;
     private static final int REQUEST_CAMERA_PERMISSION = 100;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private String currentPhotoPath = "";
@@ -44,6 +46,8 @@ public class List3_1 extends AppCompatActivity {
     private EditText nameField, plateField, vinField, taskField, buyItemField, priceItemField, priceHourField;
     private Button saveButton, backButton;
     private ContactDatabase database;
+
+    private List<String> photoPaths = new ArrayList<>();
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -79,7 +83,7 @@ public class List3_1 extends AppCompatActivity {
             }
         });
 
-        dynamicFieldsContainer = findViewById(R.id.dynamicContainer);
+        /*dynamicFieldsContainer = findViewById(R.id.dynamicContainer);
         Button addItemButton = findViewById(R.id.addItemButton);
         
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -95,7 +99,7 @@ public class List3_1 extends AppCompatActivity {
             public void onClick(View v) {
                 addNewFields();
             }
-        });
+        }); */
 
         // Prośba o uprawnienia
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -119,7 +123,6 @@ public class List3_1 extends AppCompatActivity {
         buyItemField = findViewById(R.id.signature5_1a);
         priceItemField = findViewById(R.id.signature5_1b);
         priceHourField = findViewById(R.id.signature6_1);
-        priceImagePath = findViewById(R.id.photoContainer);
 
         saveButton = findViewById(R.id.saveButton);
         backButton = findViewById(R.id.backButton);
@@ -159,6 +162,11 @@ public class List3_1 extends AppCompatActivity {
             user.setPriceHour(priceHourField.getText().toString());
             user.setEmail(loggedInEmail);
 
+            // Przypisanie ścieżki do zdjęcia
+            if (!currentPhotoPath.isEmpty()) {
+                user.setImagePath(currentPhotoPath);
+            }
+
             // Zapisz dane do bazy
             database.userDataDao().insert(user);
             runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
@@ -191,6 +199,56 @@ public class List3_1 extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            File photoFile = new File(currentPhotoPath);
+
+            if (photoFile.exists()) { // Sprawdzenie, czy plik istnieje
+                // Dodaj ścieżkę zdjęcia do listy
+                photoPaths.add(currentPhotoPath);
+
+                // Załaduj zdjęcie z pliku
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 4; // Zmniejszenie rozmiaru bitmapy
+                Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+
+                if (bitmap != null) {
+                    // Dodaj zdjęcie do kontenera
+                    addPhotoToContainer(bitmap);
+
+                    Log.d("PhotoAdded", "Dodano zdjęcie: " + photoFile.getName());
+                } else {
+                    Log.e("Error", "Nie udało się załadować bitmapy.");
+                }
+            } else {
+                Log.e("Error", "Plik zdjęcia nie istnieje: " + currentPhotoPath);
+            }
+        }
+    }
+
+    // Funkcja do dodawania zdjęcia do kontenera
+    private void addPhotoToContainer(Bitmap bitmap) {
+        LinearLayout photoContainer = findViewById(R.id.photoContainer);
+
+        // Utwórz nowy ImageView dla zdjęcia
+        ImageView newPhotoView = new ImageView(this);
+
+        // Ustawienia dla ImageView
+        newPhotoView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        newPhotoView.setImageBitmap(bitmap);
+        newPhotoView.setAdjustViewBounds(true);
+        newPhotoView.setPadding(0, 16, 0, 16);
+
+        // Dodaj ImageView do kontenera
+        photoContainer.addView(newPhotoView);
+    }
+
+    // Tworzenie unikalnej ścieżki zdjęcia
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -202,45 +260,6 @@ public class List3_1 extends AppCompatActivity {
         );
         currentPhotoPath = image.getAbsolutePath();
         return image;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            File photoFile = new File(currentPhotoPath);
-
-            if (photoFile.exists()) { // Sprawdzenie, czy plik istnieje
-                // Załaduj zdjęcie w odpowiednim rozmiarze
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = 4; // Skaluje obraz, zmniejszając zużycie pamięci
-                Bitmap bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
-
-                if (bitmap != null) {
-                    // Dodaj nowe ImageView do kontenera
-                    LinearLayout photoContainer = findViewById(R.id.photoContainer);
-                    ImageView newPhotoView = new ImageView(this);
-
-                    // Ustaw właściwości nowego ImageView
-                    newPhotoView.setLayoutParams(new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT));
-                    newPhotoView.setImageBitmap(bitmap);
-                    newPhotoView.setAdjustViewBounds(true);
-                    newPhotoView.setPadding(0, 16, 0, 16); // Odstępy między zdjęciami
-
-                    // Dodaj ImageView do kontenera
-                    photoContainer.addView(newPhotoView);
-
-                    // Opcjonalne logowanie
-                    Log.d("PhotoAdded", "Dodano zdjęcie: " + photoFile.getName());
-                } else {
-                    Log.e("Error", "Nie udało się załadować bitmapy.");
-                }
-            } else {
-                Log.e("Error", "Plik zdjęcia nie istnieje: " + currentPhotoPath);
-            }
-        }
     }
 
     @Override

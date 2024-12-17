@@ -19,7 +19,6 @@ import java.util.Locale;
 
 import pl.dawid.yourmotobudget.data.ContactDatabase;
 import pl.dawid.yourmotobudget.data.UserData;
-import pl.dawid.yourmotobudget.data.UserDataAdapter;
 
 public class List3 extends AppCompatActivity {
 
@@ -69,12 +68,16 @@ public class List3 extends AppCompatActivity {
             List<UserData> userDataList = database.userDataDao().getUserDataByUserId(loggedInUserId);
 
             runOnUiThread(() -> {
-                adapter = new UserDataAdapter(userDataList);
-                recyclerView.setAdapter(adapter);
+                if (userDataList != null && !userDataList.isEmpty()) {
+                    // Przekazujemy kontekst do adaptera
+                    adapter = new UserDataAdapter(userDataList, List3.this); // Przekazujemy kontekst
+                    recyclerView.setAdapter(adapter);
+                } else {
+                    Log.e("Load Data", "Brak danych dla użytkownika");
+                }
             });
         }).start();
     }
-
     private String getLoggedInEmail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika

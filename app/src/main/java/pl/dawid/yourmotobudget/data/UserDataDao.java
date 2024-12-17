@@ -17,7 +17,6 @@ public interface UserDataDao {
     @Query("SELECT * FROM user_data WHERE email = :email")
     List<UserData> getUserDataByUserId(String email);
 
-
     @Update
     void update(UserData userData);
 
@@ -29,4 +28,7 @@ public interface UserDataDao {
 
     @Query("SELECT * FROM user_data")
     List<UserData> getAllUserData();
+
+    @Query("DELETE FROM user_data WHERE name = :name")
+    void deleteUserDataById(String name);
 }
