@@ -1,4 +1,4 @@
-package pl.dawid.yourmotobudget;
+package pl.dawid.yourmotobudget.data;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -22,8 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.File;
 import java.util.List;
 
-import pl.dawid.yourmotobudget.data.ContactDatabase;
-import pl.dawid.yourmotobudget.data.UserData;
+import pl.dawid.yourmotobudget.R;
 
 public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDataViewHolder> {
 

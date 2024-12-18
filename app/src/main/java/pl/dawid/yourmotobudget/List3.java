@@ -19,6 +19,7 @@ import java.util.Locale;
 
 import pl.dawid.yourmotobudget.data.ContactDatabase;
 import pl.dawid.yourmotobudget.data.UserData;
+import pl.dawid.yourmotobudget.data.UserDataAdapter;
 
 public class List3 extends AppCompatActivity {
 

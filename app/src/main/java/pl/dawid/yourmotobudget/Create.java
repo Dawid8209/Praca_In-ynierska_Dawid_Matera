@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import pl.dawid.yourmotobudget.data.ContactDatabase;
 import pl.dawid.yourmotobudget.data.User;
+import pl.dawid.yourmotobudget.data.UserViewModel;
 
 public class Create extends AppCompatActivity {
     @Override

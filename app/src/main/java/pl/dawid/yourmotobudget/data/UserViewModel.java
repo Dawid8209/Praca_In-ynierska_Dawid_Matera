@@ -1,14 +1,13 @@
-package pl.dawid.yourmotobudget;
+package pl.dawid.yourmotobudget.data;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import pl.dawid.yourmotobudget.data.User;
+import pl.dawid.yourmotobudget.Repository;
 
 public class UserViewModel extends AndroidViewModel {
     private final Repository repository;

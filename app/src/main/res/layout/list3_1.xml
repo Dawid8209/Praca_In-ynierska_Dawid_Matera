@@ -154,7 +154,7 @@
                         android:id="@+id/signature5b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cena:"
+                        android:text="Cena za całość:"
                         android:textSize="18sp"
                         android:textColor="@color/black"
                         android:layout_marginStart="10dp"

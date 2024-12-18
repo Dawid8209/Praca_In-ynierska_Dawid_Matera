@@ -32,17 +32,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nameEmployee"
+                android:id="@+id/nameEmployeeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Imię i nazwisko:"
+                android:text="Imię i nazwisko:  *"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/nameEmployeeText"
+                android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
@@ -60,14 +60,14 @@
                 android:id="@+id/salaryEmployee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pensja:"
+                android:text="Pensja:  *"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/salaryEmployeeText"
+                android:id="@+id/salaryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
@@ -92,7 +92,7 @@
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/bonusText"
+                android:id="@+id/bonusTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
@@ -117,7 +117,7 @@
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/salaryAditionText"
+                android:id="@+id/supplementTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"

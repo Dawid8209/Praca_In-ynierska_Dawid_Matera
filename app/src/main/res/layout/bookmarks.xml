@@ -143,27 +143,27 @@
 
         <Button
             android:id="@+id/overallProfit"
-            android:layout_width="360dp"
+            android:layout_width="385dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_edittext"
             android:layout_gravity="center"
             android:text="Zysk ogólny"
             android:textSize="23dp"
             android:textColor="@color/green"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
             />
 
         <Button
             android:id="@+id/history"
-            android:layout_width="360dp"
+            android:layout_width="385dp"
             android:layout_height="75dp"
             android:background="@drawable/rounded_edittext"
             android:layout_gravity="center"
             android:text="Historia"
             android:textSize="23dp"
             android:textColor="@color/gray"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             />
 
         <LinearLayout

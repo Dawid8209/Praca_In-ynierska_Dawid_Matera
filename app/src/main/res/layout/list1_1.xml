@@ -32,17 +32,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/topicCosts"
+                android:id="@+id/TextView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Temat kosztu:"
+                android:text="Nazwa kosztu:  *"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/topicItems"
+                android:id="@+id/nameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
@@ -55,40 +55,17 @@
                 android:layout_marginBottom="2dp"/>
 
             <TextView
-                android:id="@+id/quantity1"
+                android:id="@+id/TextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ilość:"
+                android:text="Łączna cena:  *"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="4dp" />
 
             <EditText
-                android:id="@+id/quantity1.1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_edittext"
-                android:layout_gravity="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:paddingLeft="20px"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="2dp"/>
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Łączna cena:"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="4dp" />
-
-            <EditText
-                android:id="@+id/priceItem"
+                android:id="@+id/costsTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
