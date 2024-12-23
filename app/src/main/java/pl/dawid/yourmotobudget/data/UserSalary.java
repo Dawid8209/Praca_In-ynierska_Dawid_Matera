@@ -10,9 +10,9 @@ public class UserSalary {
     private int id;
 
     private String nameTextView;
-    private String salaryTextView;
-    private String bonusTextView;
-    private String supplementTextView;
+    private Double salaryTextView;
+    private Double bonusTextView;
+    private Double supplementTextView;
     private String email;
 
     public UserSalary() {}
@@ -23,14 +23,14 @@ public class UserSalary {
     public String getNameTextView() { return nameTextView; }
     public void setNameTextView(String nameTextView) { this.nameTextView = nameTextView; }
 
-    public String getSalaryTextView() { return salaryTextView; }
-    public void setSalaryTextView(String salaryTextView) { this.salaryTextView = salaryTextView; }
+    public Double getSalaryTextView() { return salaryTextView; }
+    public void setSalaryTextView(Double salaryTextView) { this.salaryTextView = salaryTextView; }
 
-    public String getBonusTextView() { return bonusTextView; }
-    public void setBonusTextView(String bonusTextView) { this.bonusTextView = bonusTextView; }
+    public Double getBonusTextView() { return bonusTextView; }
+    public void setBonusTextView(Double bonusTextView) { this.bonusTextView = bonusTextView; }
 
-    public String getSupplementTextView() { return supplementTextView; }
-    public void setSupplementTextView(String supplementTextView) { this.supplementTextView = supplementTextView; }
+    public Double getSupplementTextView() { return supplementTextView; }
+    public void setSupplementTextView(Double supplementTextView) { this.supplementTextView = supplementTextView; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }

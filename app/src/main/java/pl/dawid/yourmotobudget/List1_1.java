@@ -78,12 +78,12 @@ public class List1_1 extends AppCompatActivity {
                 costsTextViewString = costsTextViewString.replace(",", ".");
 
                 // Spróbuj przekonwertować tekst na Double
-                Double costs = Double.parseDouble(costsTextViewString);  // Parsowanie na Double
+                Double costsTextView = Double.parseDouble(costsTextViewString);  // Parsowanie na Double
 
                 // Utwórz obiekt Costs i ustaw wartości
                 Costs user = new Costs();
                 user.setNameTextView(nameTextView.getText().toString());
-                user.setCostsTextView(costs);  // Ustawienie jako Double
+                user.setCostsTextView(costsTextView);  // Ustawienie jako Double
                 user.setEmail(loggedInEmail);
 
                 database.costsDao().insert(user);

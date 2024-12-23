@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import pl.dawid.yourmotobudget.R;
 
@@ -45,9 +46,9 @@ public class UserSalaryAdapter extends RecyclerView.Adapter<UserSalaryAdapter.Us
         UserSalary userSalary = userSalaryList.get(position);
 
         holder.nameTextView.setText(userSalary.getNameTextView());
-        holder.salaryTextView.setText(userSalary.getSalaryTextView());
-        holder.bonusTextView.setText(userSalary.getBonusTextView());
-        holder.supplementTextView.setText(userSalary.getSupplementTextView());
+        holder.salaryTextView.setText(String.format(Locale.getDefault(), "%.2f", userSalary.getSalaryTextView()));
+        holder.bonusTextView.setText(String.format(Locale.getDefault(), "%.2f", userSalary.getBonusTextView()));
+        holder.supplementTextView.setText(String.format(Locale.getDefault(), "%.2f", userSalary.getSupplementTextView()));
         holder.deleteButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Potwierdzenie")

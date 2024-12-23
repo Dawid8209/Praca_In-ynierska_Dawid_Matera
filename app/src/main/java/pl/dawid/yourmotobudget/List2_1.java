@@ -57,6 +57,10 @@ public class List2_1 extends AppCompatActivity {
         new Thread(() -> {
             String loggedInEmail = getLoggedInEmail();
 
+            String salaryTextViewString = salaryTextView.getText().toString().trim();
+            String bonusTextViewString = bonusTextView.getText().toString().trim();
+            String supplementTextViewString = supplementTextView.getText().toString().trim();
+
             // Upewnij się, że pola istnieją i nie są puste
             if (nameTextView == null || nameTextView.getText().toString().isEmpty() ||
                     salaryTextView == null || salaryTextView.getText().toString().isEmpty()) {
@@ -67,12 +71,38 @@ public class List2_1 extends AppCompatActivity {
                 return;
             }
 
+            if (!salaryTextViewString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena pensji!", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            if (!bonusTextViewString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena premii!", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            if (!supplementTextViewString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena dodatku do pensji!", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            salaryTextViewString = salaryTextViewString.replace(",", ".");
+            bonusTextViewString = bonusTextViewString.replace(",", ".");
+            supplementTextViewString = supplementTextViewString.replace(",", ".");
+
+            Double salaryTextView = Double.parseDouble(salaryTextViewString);
+            Double bonusTextView = Double.parseDouble(bonusTextViewString);
+            Double supplementTextView = Double.parseDouble(supplementTextViewString);
+
             // Utwórz nowy obiekt UserSalary na podstawie wprowadzonych danych
             UserSalary user = new UserSalary();
             user.setNameTextView(nameTextView.getText().toString());
-            user.setSalaryTextView(salaryTextView.getText().toString());
-            user.setBonusTextView(bonusTextView.getText().toString());
-            user.setSupplementTextView(supplementTextView.getText().toString());
+            user.setSalaryTextView(salaryTextView);
+            user.setBonusTextView(bonusTextView);
+            user.setSupplementTextView(supplementTextView);
             user.setEmail(loggedInEmail);
 
             // Zapisz dane do bazy
