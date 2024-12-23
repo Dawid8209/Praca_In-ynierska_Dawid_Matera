@@ -63,11 +63,41 @@ public class Create extends AppCompatActivity {
                 Toast.makeText(this, "Wszystkie pola są wymagane!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            /*/
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Podaj poprawny adres e-mail!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (haslo.length() <= 8) {
+                Toast.makeText(this, "Hasło musi mieć więcej niż 8 znaków!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (!haslo.equals(powtorzHaslo)) {
                 Toast.makeText(this, "Hasła nie pasują do siebie!", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            if (!haslo.matches(".*[A-Z].*")) {
+                Toast.makeText(this, "Hasło musi zawierać co najmniej jedną wielką literę!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!haslo.matches(".*[a-z].*")) {
+                Toast.makeText(this, "Hasło musi zawierać co najmniej jedną małą literę!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!haslo.matches(".*\\d.*")) {
+                Toast.makeText(this, "Hasło musi zawierać co najmniej jedną cyfrę!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!haslo.matches(".*[!@#\\$%^&*].*")) {
+                Toast.makeText(this, "Hasło musi zawierać co najmniej jeden znak specjalny (!@#$%^&*)!", Toast.LENGTH_SHORT).show();
+                return;
+            } /*/
 
             // Wstawienie do bazy danych (w osobnym wątku)
             new Thread(() -> {

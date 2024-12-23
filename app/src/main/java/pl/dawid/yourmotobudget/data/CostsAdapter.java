@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import pl.dawid.yourmotobudget.R;
 
@@ -45,7 +46,7 @@ public class CostsAdapter extends RecyclerView.Adapter<CostsAdapter.CostsViewHol
         Costs costs = costsList.get(position);
 
         holder.nameTextView.setText(costs.getNameTextView());
-        holder.costsTextView.setText(costs.getCostsTextView());
+        holder.costsTextView.setText(String.format(Locale.getDefault(), "%.2f", costs.getCostsTextView()));
         holder.deleteButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Potwierdzenie")

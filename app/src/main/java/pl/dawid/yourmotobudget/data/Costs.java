@@ -10,7 +10,7 @@ public class Costs {
     private int id;
 
     private String nameTextView;
-    private String costsTextView;
+    private Double costsTextView;
     private String email;
 
     public Costs() {}
@@ -21,8 +21,8 @@ public class Costs {
     public String getNameTextView() { return nameTextView; }
     public void setNameTextView(String nameTextView) { this.nameTextView = nameTextView; }
 
-    public String getCostsTextView() { return costsTextView; }
-    public void setCostsTextView(String costsTextView) { this.costsTextView = costsTextView; }
+    public Double getCostsTextView() { return costsTextView; }
+    public void setCostsTextView(Double costsTextView) { this.costsTextView = costsTextView; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }

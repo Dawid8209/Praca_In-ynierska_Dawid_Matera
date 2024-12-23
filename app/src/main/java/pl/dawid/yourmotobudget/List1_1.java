@@ -55,25 +55,42 @@ public class List1_1 extends AppCompatActivity {
         new Thread(() -> {
             String loggedInEmail = getLoggedInEmail();
 
+            String costsTextViewString = costsTextView.getText().toString().trim();
+
             // Upewnij się, że pola istnieją i nie są puste
             if (nameTextView == null || nameTextView.getText().toString().isEmpty() ||
                     costsTextView == null || costsTextView.getText().toString().isEmpty()) {
 
-                runOnUiThread(() ->
-                        Toast.makeText(this, "Uzupełnij wszystkie pola z gwiazdką!", Toast.LENGTH_SHORT).show()
-                );
+                runOnUiThread(() -> Toast.makeText(this, "Uzupełnij wszystkie pola z gwiazdką!", Toast.LENGTH_SHORT).show());
+                return;
+
+            }
+            if (!costsTextViewString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());
                 return;
             }
 
-            // Utwórz nowy obiekt UserSalary na podstawie wprowadzonych danych
-            Costs user = new Costs();
-            user.setNameTextView(nameTextView.getText().toString());
-            user.setCostsTextView(costsTextView.getText().toString());
-            user.setEmail(loggedInEmail);
+            // Utwórz nowy obiekt Costs na podstawie wprowadzonych danych
+            try {
+                // Zamień przecinek na kropkę, jeśli użytkownik używa przecinka w liczbach zmiennoprzecinkowych
+                costsTextViewString = costsTextViewString.replace(",", ".");
 
-            // Zapisz dane do bazy
-            database.costsDao().insert(user);
-            runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
+                // Spróbuj przekonwertować tekst na Double
+                Double costs = Double.parseDouble(costsTextViewString);  // Parsowanie na Double
+
+                // Utwórz obiekt Costs i ustaw wartości
+                Costs user = new Costs();
+                user.setNameTextView(nameTextView.getText().toString());
+                user.setCostsTextView(costs);  // Ustawienie jako Double
+                user.setEmail(loggedInEmail);
+
+                database.costsDao().insert(user);
+                runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
+
+            } catch (NumberFormatException e) {
+                runOnUiThread(() -> Toast.makeText(this, "Podaj poprawną cenę!", Toast.LENGTH_SHORT).show());
+            }
 
         }).start();
     }
