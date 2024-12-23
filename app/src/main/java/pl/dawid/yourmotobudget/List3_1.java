@@ -140,6 +140,9 @@ public class List3_1 extends AppCompatActivity {
         new Thread(() -> {
             String loggedInEmail = getLoggedInEmail();
 
+            String priceItemFieldString = priceItemField.getText().toString().trim();
+            String priceHourFieldString = priceHourField.getText().toString().trim();
+
             // Upewnij się, że pola istnieją i nie są puste
             if (nameField == null || nameField.getText().toString().isEmpty() ||
                     taskField == null || taskField.getText().toString().isEmpty() ||
@@ -151,6 +154,25 @@ public class List3_1 extends AppCompatActivity {
                 return; // Zakończ, jeśli pola są puste
             }
 
+            if (!priceItemFieldString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            if (!priceHourFieldString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
+
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());
+                return;
+            }
+
+            // Zamień przecinek na kropkę, jeśli użytkownik używa przecinka w liczbach zmiennoprzecinkowych
+            priceItemFieldString = priceItemFieldString.replace(",", ".");
+            priceHourFieldString = priceHourFieldString.replace(",", ".");
+
+            Double priceItem = Double.parseDouble(priceItemFieldString);
+            Double priceHour = Double.parseDouble(priceHourFieldString);
+
             // Utwórz nowy obiekt UserData na podstawie wprowadzonych danych
             UserData user = new UserData();
             user.setName(nameField.getText().toString());
@@ -158,8 +180,8 @@ public class List3_1 extends AppCompatActivity {
             user.setVin(vinField.getText().toString());
             user.setTask(taskField.getText().toString());
             user.setBuyItem(buyItemField.getText().toString());
-            user.setPriceItem(priceItemField.getText().toString());
-            user.setPriceHour(priceHourField.getText().toString());
+            user.setPriceItem(priceItem);
+            user.setPriceHour(priceHour);
             user.setEmail(loggedInEmail);
 
             // Przypisanie ścieżki do zdjęcia

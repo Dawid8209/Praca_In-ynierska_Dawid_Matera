@@ -65,6 +65,7 @@ public class List1_1 extends AppCompatActivity {
                 return;
 
             }
+
             if (!costsTextViewString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
 
                 runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());

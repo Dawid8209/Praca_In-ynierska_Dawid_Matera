@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 
 import pl.dawid.yourmotobudget.R;
 
@@ -54,8 +55,8 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
         holder.vinTextView.setText(userData.getVin());
         holder.taskTextView.setText(userData.getTask());
         holder.buyItemTextView.setText(userData.getBuyItem());
-        holder.priceItemTextView.setText(userData.getPriceItem());
-        holder.priceHourTextView.setText(userData.getPriceHour());
+        holder.priceItemTextView.setText(String.format(Locale.getDefault(), "%.2f", userData.getPriceItem()));
+        holder.priceHourTextView.setText(String.format(Locale.getDefault(), "%.2f", userData.getPriceHour()));
         holder.deleteButton.setOnClickListener(v -> {
             // Tworzymy AlertDialog
             new AlertDialog.Builder(context)

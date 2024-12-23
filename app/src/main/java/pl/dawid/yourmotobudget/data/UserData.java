@@ -14,8 +14,8 @@ public class UserData {
     private String vin;
     private String task;
     private String buyItem;
-    private String priceItem;
-    private String priceHour;
+    private Double priceItem;
+    private Double priceHour;
     private String email;
     private String imagePath;
 
@@ -39,11 +39,11 @@ public class UserData {
     public String getBuyItem() { return buyItem; }
     public void setBuyItem(String buyItem) { this.buyItem = buyItem; }
 
-    public String getPriceItem() { return priceItem; }
-    public void setPriceItem(String priceItem) { this.priceItem = priceItem; }
+    public Double getPriceItem() { return priceItem; }
+    public void setPriceItem(Double priceItem) { this.priceItem = priceItem; }
 
-    public String getPriceHour() { return priceHour; }
-    public void setPriceHour(String priceHour) { this.priceHour = priceHour; }
+    public Double getPriceHour() { return priceHour; }
+    public void setPriceHour(Double priceHour) { this.priceHour = priceHour; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }

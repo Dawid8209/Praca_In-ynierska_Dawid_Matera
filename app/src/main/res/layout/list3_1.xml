@@ -236,7 +236,7 @@
             android:id="@+id/signature6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Łączna kwota za roboczogodziny:  *"
+            android:text="Łączna cena za roboczogodziny:  *"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginStart="10dp"
