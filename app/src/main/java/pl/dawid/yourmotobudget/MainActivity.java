@@ -57,16 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
                     SharedPreferences preferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("loggedUserEmail", user.getEmail()); // Zakładamy, że email jest unikalny
+                    editor.putString("loggedUserEmail", user.getEmail());
                     editor.apply();
 
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Zalogowano pomyślnie!", Toast.LENGTH_SHORT).show();
 
-                        // Przechodzimy do MainActivity
                         Intent intent = new Intent(MainActivity.this, BookMarks.class);
                         startActivity(intent);
-                        finish(); // Zamyka bieżącą aktywność
+                        finish();
                     });
                 } else {
                     runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa nazwa firmy lub hasło!", Toast.LENGTH_SHORT).show());
@@ -95,24 +94,8 @@ public class MainActivity extends AppCompatActivity {
     private void saveLoggedInEmail(String email) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("loggedInEmail", email); // Zapisz ID użytkownika
+        editor.putString("loggedInEmail", email);
         editor.apply();
-    }
-
-    private String getLoggedInEmail() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
-    }
-
-    private void logout() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("loggedInUserId"); // Usuń zapisane ID użytkownika
-        editor.apply();
-
-        // Przejdź do ekranu logowania
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
     }
 }
 

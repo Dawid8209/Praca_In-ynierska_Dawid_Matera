@@ -19,6 +19,15 @@ public interface UserSalaryDao {
     @Update
     void update(UserSalary UserSalary);
 
+    @Query("SELECT * FROM user_salary WHERE salaryTextView = :salaryTextView")
+    UserData getSalary(int salaryTextView);
+
+    @Query("SELECT * FROM user_salary WHERE bonusTextView = :bonusTextView")
+    UserData getBonus(int bonusTextView);
+
+    @Query("SELECT * FROM user_salary WHERE supplementTextView = :supplementTextView")
+    UserData getSupplement(int supplementTextView);
+
     @Query("DELETE FROM user_salary WHERE nameTextView = :nameTextView")
     void deleteUserSalaryById(String nameTextView);
 }

@@ -22,7 +22,7 @@ public class Create extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create);  // Przypisanie drugiego layoutu
+        setContentView(R.layout.create);
 
         TextView currentDateText = findViewById(R.id.dataText);
 
@@ -57,7 +57,6 @@ public class Create extends AppCompatActivity {
             String haslo = hasloField.getText().toString();
             String powtorzHaslo = powtorzHasloField.getText().toString();
 
-            // Walidacja
             if (imie.isEmpty() || nazwisko.isEmpty() || adres.isEmpty() ||
                     nazwaFirmy.isEmpty() || email.isEmpty() || haslo.isEmpty()) {
                 Toast.makeText(this, "Wszystkie pola są wymagane!", Toast.LENGTH_SHORT).show();
@@ -99,20 +98,16 @@ public class Create extends AppCompatActivity {
                 return;
             } /*/
 
-            // Wstawienie do bazy danych (w osobnym wątku)
             new Thread(() -> {
                 ContactDatabase db = ContactDatabase.getInstance(getApplicationContext());
 
-                // Sprawdzanie, czy użytkownik o podanym e-mailu już istnieje
                 User existingUser = db.userDao().getUserByEmail(email);
 
-                // Jeśli użytkownik istnieje, wyświetlamy komunikat i kończymy
                 if (existingUser != null) {
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Konto z tym adresem e-mail już istnieje!", Toast.LENGTH_SHORT).show();
                     });
                 } else {
-                    // Tworzenie nowego użytkownika
                     User user = new User();
                     user.setImie(imie);
                     user.setNazwisko(nazwisko);
@@ -121,10 +116,8 @@ public class Create extends AppCompatActivity {
                     user.setEmail(email);
                     user.setHaslo(haslo);
 
-                    // Wstawienie do bazy danych
                     db.userDao().insert(user);
 
-                    // Powiadomienie o utworzeniu konta
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Konto zostało utworzone!", Toast.LENGTH_SHORT).show();
                     });

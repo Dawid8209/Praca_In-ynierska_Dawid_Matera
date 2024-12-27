@@ -58,24 +58,19 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
         holder.priceItemTextView.setText(String.format(Locale.getDefault(), "%.2f", userData.getPriceItem()));
         holder.priceHourTextView.setText(String.format(Locale.getDefault(), "%.2f", userData.getPriceHour()));
         holder.deleteButton.setOnClickListener(v -> {
-            // Tworzymy AlertDialog
             new AlertDialog.Builder(context)
                     .setTitle("Potwierdzenie")
                     .setMessage("Czy na pewno chcesz usunąć? Ta czynność jest nieodwracalna.")
                     .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // Usuwamy dane z bazy danych
                             new Thread(() -> {
-                                // Zdobądź ID UserData (np. po VIN, id, czy innym unikalnym identyfikatorze)
-                                String userName = userData.getName(); // Zakładając, że VIN jest unikalne
+                                String userName = userData.getName();
                                 database.userDataDao().deleteUserDataById(userName);
 
-                                // Usuwamy element z listy użytkownika
                                 userDataList.remove(position);
 
-                                // Aktualizujemy UI - korzystając z kontekstu
-                                if (context instanceof AppCompatActivity) {  // Sprawdzamy, czy context to aktywność
+                                if (context instanceof AppCompatActivity) {
                                     ((AppCompatActivity) context).runOnUiThread(() -> {
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, userDataList.size());
@@ -85,12 +80,11 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
                             }).start();
                         }
                     })
-                    .setNegativeButton("Nie", null) // Jeśli użytkownik kliknie "Nie", nic się nie dzieje
+                    .setNegativeButton("Nie", null)
                     .create()
                     .show();
         });
 
-        // Wczytanie obrazu (jeśli istnieje ścieżka)
         if (userData.getImagePath() != null && !userData.getImagePath().isEmpty()) {
             File imgFile = new File(userData.getImagePath());
             if(imgFile.exists()){
@@ -98,11 +92,11 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
                 holder.imageView.setImageBitmap(bitmap);
             }else {
                 Log.e("ImageLoader", "Plik nie istnieje: " + userData.getImagePath());
-                holder.imageView.setImageResource(R.drawable.burning_wheel); // Domyślny obraz
+                holder.imageView.setImageResource(R.drawable.burning_wheel);
             }
         } else {
             Log.e("ImageLoader", "Ścieżka obrazu jest pusta lub null!");
-            holder.imageView.setImageResource(R.drawable.burning_wheel); // Domyślny obraz
+            holder.imageView.setImageResource(R.drawable.burning_wheel);
         }
     }
 

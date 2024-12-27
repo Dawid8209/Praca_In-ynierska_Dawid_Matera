@@ -1,6 +1,5 @@
 package pl.dawid.yourmotobudget;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -110,7 +109,7 @@ public class BookMarks extends AppCompatActivity {
 
                 SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("loggedInEmail"); // Usuń zapisane ID użytkownika
+                editor.remove("loggedInEmail");
                 editor.apply();
 
                 Toast.makeText(BookMarks.this, "Wylogowano", Toast.LENGTH_SHORT).show();
@@ -125,12 +124,10 @@ public class BookMarks extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Wyświetlenie okienka potwierdzającego
                 new AlertDialog.Builder(BookMarks.this)
                     .setTitle("Potwierdzenie")
                     .setMessage("Czy na pewno chcesz usunąć swoje konto? Tego działania nie da się cofnąć.")
                     .setPositiveButton("Tak", (dialog, which) -> {
-                        // Logika usuwania konta po potwierdzeniu
                         SharedPreferences preferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                         String loggedUserEmail = preferences.getString("loggedUserEmail", null);
 
@@ -161,11 +158,9 @@ public class BookMarks extends AppCompatActivity {
                         }).start();
                     })
                     .setNegativeButton("Nie", (dialog, which) -> {
-                        // Anulowanie usuwania
                         Toast.makeText(BookMarks.this, "Usunięcie konta zostało anulowane", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
-                    })
-                    .show();
+                    }).show();
             }
         });
     }

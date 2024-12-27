@@ -45,6 +45,7 @@ public class List1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         costsView = findViewById(R.id.costsView);
         costsView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -62,15 +63,13 @@ public class List1 extends AppCompatActivity {
         }
 
         new Thread(() -> {
-            String loggedInUserId = getLoggedInEmail(); // Pobierz ID zalogowanego użytkownika
+            String loggedInUserId = getLoggedInEmail();
 
-            // Pobierz dane tylko dla zalogowanego użytkownika
             List<Costs> costsList = database.costsDao().getCostsByUserId(loggedInUserId);
 
             runOnUiThread(() -> {
                 if (costsList != null && !costsList.isEmpty()) {
-                    // Przekazujemy kontekst do adaptera
-                    adapter = new CostsAdapter(costsList, List1.this); // Przekazujemy kontekst
+                    adapter = new CostsAdapter(costsList, List1.this);
                     costsView.setAdapter(adapter);
                 } else {
                     Log.e("Load Data", "Brak danych dla użytkownika");
@@ -80,6 +79,6 @@ public class List1 extends AppCompatActivity {
     }
     private String getLoggedInEmail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
+        return sharedPreferences.getString("loggedInEmail", null);
     }
 }

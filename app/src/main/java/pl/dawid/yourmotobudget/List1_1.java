@@ -35,7 +35,6 @@ public class List1_1 extends AppCompatActivity {
             }
         });
 
-        // Inicjalizacja pól
         nameTextView = findViewById(R.id.nameTextView);
         costsTextView = findViewById(R.id.costsTextView);
 
@@ -44,10 +43,8 @@ public class List1_1 extends AppCompatActivity {
 
         database = ContactDatabase.getInstance(this);
 
-        // Obsługa kliknięcia przycisku "Zapisz"
         saveButton.setOnClickListener(v -> saveCosts());
 
-        // Obsługa kliknięcia przycisku "Cofnij"
         backButton.setOnClickListener(v -> finish());
     }
 
@@ -72,18 +69,14 @@ public class List1_1 extends AppCompatActivity {
                 return;
             }
 
-            // Utwórz nowy obiekt Costs na podstawie wprowadzonych danych
             try {
-                // Zamień przecinek na kropkę, jeśli użytkownik używa przecinka w liczbach zmiennoprzecinkowych
                 costsTextViewString = costsTextViewString.replace(",", ".");
 
-                // Spróbuj przekonwertować tekst na Double
-                Double costsTextView = Double.parseDouble(costsTextViewString);  // Parsowanie na Double
+                Double costsTextView = Double.parseDouble(costsTextViewString);
 
-                // Utwórz obiekt Costs i ustaw wartości
                 Costs user = new Costs();
                 user.setNameTextView(nameTextView.getText().toString());
-                user.setCostsTextView(costsTextView);  // Ustawienie jako Double
+                user.setCostsTextView(costsTextView);
                 user.setEmail(loggedInEmail);
 
                 database.costsDao().insert(user);
@@ -95,7 +88,6 @@ public class List1_1 extends AppCompatActivity {
 
         }).start();
     }
-
     private String getLoggedInEmail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika

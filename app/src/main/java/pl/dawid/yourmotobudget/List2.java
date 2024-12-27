@@ -48,10 +48,8 @@ public class List2 extends AppCompatActivity {
         salaryView = findViewById(R.id.salaryView);
         salaryView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Inicjalizacja bazy danych
         database = ContactDatabase.getInstance(this);
 
-        // Załaduj dane
         loadUserSalary();
     }
 
@@ -62,15 +60,14 @@ public class List2 extends AppCompatActivity {
         }
 
         new Thread(() -> {
-            String loggedInUserId = getLoggedInEmail(); // Pobierz ID zalogowanego użytkownika
+            String loggedInUserId = getLoggedInEmail();
 
-            // Pobierz dane tylko dla zalogowanego użytkownika
             List<UserSalary> userSalaryList = database.userSalaryDao().getUserSalaryByUserId(loggedInUserId);
 
             runOnUiThread(() -> {
                 if (userSalaryList != null && !userSalaryList.isEmpty()) {
                     // Przekazujemy kontekst do adaptera
-                    adapter = new UserSalaryAdapter(userSalaryList, List2.this); // Przekazujemy kontekst
+                    adapter = new UserSalaryAdapter(userSalaryList, List2.this);
                     salaryView.setAdapter(adapter);
                 } else {
                     Log.e("Load Data", "Brak danych dla użytkownika");
@@ -80,6 +77,6 @@ public class List2 extends AppCompatActivity {
     }
     private String getLoggedInEmail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
+        return sharedPreferences.getString("loggedInEmail", null);
     }
 }

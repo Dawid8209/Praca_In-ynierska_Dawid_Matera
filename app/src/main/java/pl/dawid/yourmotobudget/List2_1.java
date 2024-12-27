@@ -35,7 +35,6 @@ public class List2_1 extends AppCompatActivity {
             }
         });
 
-        // Inicjalizacja pól
         nameTextView = findViewById(R.id.nameTextView);
         salaryTextView = findViewById(R.id.salaryTextView);
         bonusTextView = findViewById(R.id.bonusTextView);
@@ -46,10 +45,8 @@ public class List2_1 extends AppCompatActivity {
 
         database = ContactDatabase.getInstance(this);
 
-        // Obsługa kliknięcia przycisku "Zapisz"
         saveButton.setOnClickListener(v -> saveUserSalary());
 
-        // Obsługa kliknięcia przycisku "Cofnij"
         backButton.setOnClickListener(v -> finish());
     }
 
@@ -61,7 +58,6 @@ public class List2_1 extends AppCompatActivity {
             String bonusTextViewString = bonusTextView.getText().toString().trim();
             String supplementTextViewString = supplementTextView.getText().toString().trim();
 
-            // Upewnij się, że pola istnieją i nie są puste
             if (nameTextView == null || nameTextView.getText().toString().isEmpty() ||
                     salaryTextView == null || salaryTextView.getText().toString().isEmpty()) {
 
@@ -97,7 +93,6 @@ public class List2_1 extends AppCompatActivity {
             Double bonusTextView = Double.parseDouble(bonusTextViewString);
             Double supplementTextView = Double.parseDouble(supplementTextViewString);
 
-            // Utwórz nowy obiekt UserSalary na podstawie wprowadzonych danych
             UserSalary user = new UserSalary();
             user.setNameTextView(nameTextView.getText().toString());
             user.setSalaryTextView(salaryTextView);
@@ -105,7 +100,6 @@ public class List2_1 extends AppCompatActivity {
             user.setSupplementTextView(supplementTextView);
             user.setEmail(loggedInEmail);
 
-            // Zapisz dane do bazy
             database.userSalaryDao().insert(user);
             runOnUiThread(() -> Toast.makeText(this, "Dane zapisane!", Toast.LENGTH_SHORT).show());
 
@@ -114,6 +108,6 @@ public class List2_1 extends AppCompatActivity {
 
     private String getLoggedInEmail() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        return sharedPreferences.getString("loggedInEmail", null); // Pobierz ID użytkownika
+        return sharedPreferences.getString("loggedInEmail", null);
     }
 }

@@ -11,15 +11,21 @@ public abstract class ContactDatabase extends RoomDatabase {
     public abstract UserDataDao userDataDao();
     public abstract UserSalaryDao userSalaryDao();
     public abstract CostsDao costsDao();
+    public abstract OverallProfitDao overallProfitDao();
 
     private static ContactDatabase instance;
 
     public static synchronized ContactDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-                            ContactDatabase.class, "workshop_database")
-                    .fallbackToDestructiveMigration()
-                    .build();
+            synchronized (ContactDatabase.class) {
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                            context.getApplicationContext(),
+                            ContactDatabase.class,
+                            "yourmotobudget_database"
+                    ).fallbackToDestructiveMigration().build();
+                }
+            }
         }
         return instance;
     }

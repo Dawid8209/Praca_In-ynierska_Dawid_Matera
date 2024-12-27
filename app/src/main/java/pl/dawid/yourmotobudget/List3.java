@@ -49,10 +49,8 @@ public class List3 extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Inicjalizacja bazy danych
         database = ContactDatabase.getInstance(this);
 
-        // Załaduj dane
         loadUserData();
     }
 
@@ -63,14 +61,12 @@ public class List3 extends AppCompatActivity {
         }
 
         new Thread(() -> {
-            String loggedInUserId = getLoggedInEmail(); // Pobierz ID zalogowanego użytkownika
+            String loggedInUserId = getLoggedInEmail();
 
-            // Pobierz dane tylko dla zalogowanego użytkownika
             List<UserData> userDataList = database.userDataDao().getUserDataByUserId(loggedInUserId);
 
             runOnUiThread(() -> {
                 if (userDataList != null && !userDataList.isEmpty()) {
-                    // Przekazujemy kontekst do adaptera
                     adapter = new UserDataAdapter(userDataList, List3.this); // Przekazujemy kontekst
                     recyclerView.setAdapter(adapter);
                 } else {

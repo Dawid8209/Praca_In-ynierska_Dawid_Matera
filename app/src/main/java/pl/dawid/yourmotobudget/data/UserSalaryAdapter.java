@@ -56,17 +56,13 @@ public class UserSalaryAdapter extends RecyclerView.Adapter<UserSalaryAdapter.Us
                     .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            // Usuwamy dane z bazy danych
                             new Thread(() -> {
-                                // Zdobądź ID UserData (np. po VIN, id, czy innym unikalnym identyfikatorze)
-                                String userNameTextView = userSalary.getNameTextView(); // Zakładając, że VIN jest unikalne
+                                String userNameTextView = userSalary.getNameTextView();
                                 database.userSalaryDao().deleteUserSalaryById(userNameTextView);
 
-                                // Usuwamy element z listy użytkownika
                                 userSalaryList.remove(position);
 
-                                // Aktualizujemy UI - korzystając z kontekstu
-                                if (context instanceof AppCompatActivity) {  // Sprawdzamy, czy context to aktywność
+                                if (context instanceof AppCompatActivity) {
                                     ((AppCompatActivity) context).runOnUiThread(() -> {
                                         notifyItemRemoved(position);
                                         notifyItemRangeChanged(position, userSalaryList.size());
@@ -76,7 +72,7 @@ public class UserSalaryAdapter extends RecyclerView.Adapter<UserSalaryAdapter.Us
                             }).start();
                         }
                     })
-                    .setNegativeButton("Nie", null) // Jeśli użytkownik kliknie "Nie", nic się nie dzieje
+                    .setNegativeButton("Nie", null)
                     .create()
                     .show();
         });

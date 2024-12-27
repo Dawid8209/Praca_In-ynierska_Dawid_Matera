@@ -49,34 +49,30 @@ public class CostsAdapter extends RecyclerView.Adapter<CostsAdapter.CostsViewHol
         holder.costsTextView.setText(String.format(Locale.getDefault(), "%.2f", costs.getCostsTextView()));
         holder.deleteButton.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
-                    .setTitle("Potwierdzenie")
-                    .setMessage("Czy na pewno chcesz usunąć? Ta czynność jest nieodwracalna.")
-                    .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Usuwamy dane z bazy danych
-                            new Thread(() -> {
-                                // Zdobądź ID Costs
-                                String nameTextView = costs.getNameTextView();
-                                database.costsDao().deleteCostsById(nameTextView);
+                .setTitle("Potwierdzenie")
+                .setMessage("Czy na pewno chcesz usunąć? Ta czynność jest nieodwracalna.")
+                .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new Thread(() -> {
+                            String nameTextView = costs.getNameTextView();
+                            database.costsDao().deleteCostsById(nameTextView);
 
-                                // Usuwamy element z listy użytkownika
-                                costsList.remove(position);
+                            costsList.remove(position);
 
-                                // Aktualizujemy UI - korzystając z kontekstu
-                                if (context instanceof AppCompatActivity) {  // Sprawdzamy, czy context to aktywność
-                                    ((AppCompatActivity) context).runOnUiThread(() -> {
-                                        notifyItemRemoved(position);
-                                        notifyItemRangeChanged(position, costsList.size());
-                                        Toast.makeText(context, "Element został usunięty", Toast.LENGTH_SHORT).show();
-                                    });
-                                }
-                            }).start();
-                        }
-                    })
-                    .setNegativeButton("Nie", null) // Jeśli użytkownik kliknie "Nie", nic się nie dzieje
-                    .create()
-                    .show();
+                            if (context instanceof AppCompatActivity) {
+                                ((AppCompatActivity) context).runOnUiThread(() -> {
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position, costsList.size());
+                                    Toast.makeText(context, "Element został usunięty", Toast.LENGTH_SHORT).show();
+                                });
+                            }
+                        }).start();
+                    }
+                })
+                .setNegativeButton("Nie", null)
+                .create()
+                .show();
         });
     }
 

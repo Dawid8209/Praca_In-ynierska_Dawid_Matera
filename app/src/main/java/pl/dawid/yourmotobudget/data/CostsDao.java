@@ -20,6 +20,9 @@ public interface CostsDao {
     @Update
     void update(Costs Costs);
 
+    @Query("SELECT * FROM user_costs WHERE costsTextView = :costsTextView")
+    UserData getCosts(int costsTextView);
+
     @Query("DELETE FROM user_costs WHERE nameTextView = :nameTextView")
     void deleteCostsById(String nameTextView);
 }
