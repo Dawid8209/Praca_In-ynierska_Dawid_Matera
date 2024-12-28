@@ -55,8 +55,7 @@ public class CostsAdapter extends RecyclerView.Adapter<CostsAdapter.CostsViewHol
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new Thread(() -> {
-                            String nameTextView = costs.getNameTextView();
-                            database.costsDao().deleteCostsById(nameTextView);
+                            database.costsDao().deleteCostsById(costs.getId());
 
                             costsList.remove(position);
 

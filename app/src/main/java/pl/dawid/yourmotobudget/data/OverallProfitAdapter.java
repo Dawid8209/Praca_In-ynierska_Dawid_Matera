@@ -1,7 +1,7 @@
 package pl.dawid.yourmotobudget.data;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,34 +10,27 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import pl.dawid.yourmotobudget.R;
 
 public class OverallProfitAdapter extends RecyclerView.Adapter<OverallProfitAdapter.OverallProfitHolder> {
 
-    private List<Costs> costsList;
-    private List<UserData> userDataList;
-    private List<UserSalary> userSalaryList;
-    private Context context;
-    private ContactDatabase database;
-    private List<OverallProfit> overallProfitList = new ArrayList<>();
+    private final List<OverallProfit> overallProfitList;
 
-    /*/
-    public OverallProfitAdapter(List<Costs> costsList, Context context) {
+    private String currentMonth = getCurrentMonth();
 
-        this.costsList = costsList;
-        this.userSalaryList = userSalaryList;
-        this.userDataList = userDataList;
-        this.database = ContactDatabase.getInstance(context);
-    }/*/
-    public OverallProfitAdapter(List<OverallProfit> overallProfitList, Context context) {
-        if (overallProfitList != null) {
-            this.overallProfitList = overallProfitList;
-            this.context = context;
-            this.database = ContactDatabase.getInstance(context);
-        }
+    private String getCurrentMonth() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+        return sdf.format(new Date());
+    }
+
+    public OverallProfitAdapter(List<OverallProfit> overallProfitList) {
+
+        this.overallProfitList = overallProfitList;
     }
 
     @NonNull
@@ -51,27 +44,34 @@ public class OverallProfitAdapter extends RecyclerView.Adapter<OverallProfitAdap
     @Override
     public void onBindViewHolder(@NonNull OverallProfitHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        Costs costs = costsList.get(position);
-        UserData userData = userDataList.get(position);
-        UserSalary userSalary = userSalaryList.get(position);
         OverallProfit data = overallProfitList.get(position);
 
-        holder.expensesTextView.setText(String.valueOf((data.getCostsTextView() != null ? data.getCostsTextView() : 0) +
-                (data.getPriceItem() != null ? data.getPriceItem() : 0) +
-                (data.getSalaryTextView() != null ? data.getSalaryTextView() : 0) +
-                (data.getBonusTextView() != null ? data.getBonusTextView() : 0) +
-                (data.getSupplementTextView() != null ? data.getSupplementTextView() : 0)));
-        holder.profitTextView.setText(String.valueOf( (data.getPriceHour() != null ? data.getPriceHour() : 0) +
-                ((data.getPriceItem() != null ? data.getPriceItem() : 0) *
-                        ((data.getPriceItem() != null ? data.getPriceItem() : 0) / 5))));
-        holder.togetherTextView.setText(String.valueOf((data.getCostsTextView() != null ? data.getCostsTextView() : 0) +
-                (data.getPriceItem() != null ? data.getPriceItem() : 0) +
-                (data.getSalaryTextView() != null ? data.getSalaryTextView() : 0) +
-                (data.getBonusTextView() != null ? data.getBonusTextView() : 0) +
-                (data.getSupplementTextView() != null ? data.getSupplementTextView() : 0) -
-                (data.getPriceHour() != null ? data.getPriceHour() : 0) -
-                ((data.getPriceItem() != null ? data.getPriceItem() : 0) *
-                        ((data.getPriceItem() != null ? data.getPriceItem() : 0) / 5))));
+        double costs = data.getCostsTextView() != null ? data.getCostsTextView() : 0.0;
+        double salary = data.getSalaryTextView() != null ? data.getSalaryTextView() : 0.0;
+        double bonus = data.getBonusTextView() != null ? data.getBonusTextView() : 0.0;
+        double supplement = data.getSupplementTextView() != null ? data.getSupplementTextView() : 0.0;
+        double priceItem = data.getPriceItem() != null ? data.getPriceItem() : 0.0;
+        double priceHour = data.getPriceHour() != null ? data.getPriceHour() : 0.0;
+
+        holder.month.setText(currentMonth);
+
+        holder.expensesTextView.setText(String.format(Locale.getDefault(), "%.2f",
+                costs +
+                        salary +
+                        bonus +
+                        supplement +
+                        priceItem));
+        holder.profitTextView.setText(String.format(Locale.getDefault(), "%.2f",
+                priceHour +
+                        (priceItem * 0.2)));
+        holder.togetherTextView.setText(String.format(Locale.getDefault(), "%.2f",
+                (priceHour +
+                        (priceItem * 0.2)) -
+                        (costs +
+                                priceItem +
+                                salary +
+                                bonus +
+                                supplement)));
     }
 
     @Override
@@ -80,13 +80,14 @@ public class OverallProfitAdapter extends RecyclerView.Adapter<OverallProfitAdap
     }
 
     public static class OverallProfitHolder extends RecyclerView.ViewHolder {
-        TextView expensesTextView, profitTextView, togetherTextView;
+        TextView expensesTextView, profitTextView, togetherTextView, month;
 
         public OverallProfitHolder(@NonNull View itemView) {
             super(itemView);
             expensesTextView = itemView.findViewById(R.id.expensesTextView);
             profitTextView = itemView.findViewById(R.id.profitTextView);
             togetherTextView = itemView.findViewById(R.id.togetherTextView);
+            month = itemView.findViewById(R.id.month);
         }
     }
 }

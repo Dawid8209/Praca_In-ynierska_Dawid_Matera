@@ -57,8 +57,7 @@ public class UserSalaryAdapter extends RecyclerView.Adapter<UserSalaryAdapter.Us
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             new Thread(() -> {
-                                String userNameTextView = userSalary.getNameTextView();
-                                database.userSalaryDao().deleteUserSalaryById(userNameTextView);
+                                database.userSalaryDao().deleteUserSalaryById(userSalary.getId());
 
                                 userSalaryList.remove(position);
 

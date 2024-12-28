@@ -131,16 +131,12 @@ public class BookMarks extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                         String loggedUserEmail = preferences.getString("loggedUserEmail", null);
 
-                        if (loggedUserEmail == null) {
-                            Toast.makeText(BookMarks.this, "Nie znaleziono zalogowanego użytkownika!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
                         new Thread(() -> {
                             ContactDatabase db = ContactDatabase.getInstance(getApplicationContext());
                             User user = db.userDao().getUserByEmail(loggedUserEmail);
 
                             if (user != null) {
+                                db.userDao().deleteUserDataByUserId(user.getId());
                                 db.userDao().delete(user);
 
                                 preferences.edit().remove("loggedUserEmail").apply();

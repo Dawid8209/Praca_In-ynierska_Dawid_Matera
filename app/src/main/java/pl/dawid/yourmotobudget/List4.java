@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,7 +71,7 @@ public class List4 extends AppCompatActivity {
             runOnUiThread(() -> {
                 if (dataList != null && !dataList.isEmpty()) {
 
-                    adapter = new OverallProfitAdapter(dataList, List4.this);
+                    adapter = new OverallProfitAdapter(dataList);
                     profitView.setAdapter(adapter);
                 } else {
                     Log.e("Load Data", "Brak danych dla użytkownika");

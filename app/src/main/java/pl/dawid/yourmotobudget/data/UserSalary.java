@@ -10,9 +10,9 @@ public class UserSalary {
     private int id;
 
     private String nameTextView;
-    private Double salaryTextView;
-    private Double bonusTextView;
-    private Double supplementTextView;
+    private Double salaryTextView = 0.0;
+    private Double bonusTextView = 0.0;
+    private Double supplementTextView = 0.0;
     private String email;
 
     public UserSalary() {}

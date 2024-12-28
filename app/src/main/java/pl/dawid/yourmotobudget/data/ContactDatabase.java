@@ -5,7 +5,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {User.class, UserData.class, UserSalary.class, Costs.class}, version = 5, exportSchema = true)
+@Database(entities = {User.class, UserData.class, UserSalary.class, Costs.class}, version = 4, exportSchema = true)
 public abstract class ContactDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract UserDataDao userDataDao();

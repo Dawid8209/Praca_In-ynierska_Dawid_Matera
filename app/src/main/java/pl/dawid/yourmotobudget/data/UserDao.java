@@ -33,4 +33,7 @@ public interface UserDao {
 
     @Update
     void updateUserData(UserData userData);
+
+    @Query("DELETE FROM user_data WHERE id = :userId")
+    void deleteUserDataByUserId(int userId);
 }

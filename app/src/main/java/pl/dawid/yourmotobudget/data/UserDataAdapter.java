@@ -65,8 +65,7 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             new Thread(() -> {
-                                String userName = userData.getName();
-                                database.userDataDao().deleteUserDataById(userName);
+                                database.userDataDao().deleteUserDataById(userData.getId());
 
                                 userDataList.remove(position);
 

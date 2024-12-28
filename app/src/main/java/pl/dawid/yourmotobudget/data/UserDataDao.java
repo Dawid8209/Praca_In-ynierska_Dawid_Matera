@@ -23,15 +23,9 @@ public interface UserDataDao {
     @Delete
     void delete(UserData userData);
 
-    @Query("SELECT * FROM user_data WHERE priceItem = :priceItem")
-    UserData getPriceItem(int priceItem);
-
-    @Query("SELECT * FROM user_data WHERE priceHour = :priceHour")
-    UserData getPriceHour(int priceHour);
-
     @Query("SELECT * FROM user_data")
     List<UserData> getAllUserData();
 
-    @Query("DELETE FROM user_data WHERE name = :name")
-    void deleteUserDataById(String name);
+    @Query("DELETE FROM user_data WHERE id = :id")
+    void deleteUserDataById(int id);
 }

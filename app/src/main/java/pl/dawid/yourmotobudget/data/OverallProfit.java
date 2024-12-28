@@ -2,35 +2,17 @@ package pl.dawid.yourmotobudget.data;
 
 public class OverallProfit {
 
-    private Double costsTextView;
-    private Double salaryTextView;
-    private Double bonusTextView;
-    private Double supplementTextView;
-    private Double priceItem;
-    private Double priceHour;
-    private Double expensesTextView;
-    private Double profitTextView;
-    private Double togetherTextView;
+    private Double costsTextView = 0.0;
+    private Double salaryTextView = 0.0;
+    private Double bonusTextView = 0.0;
+    private Double supplementTextView = 0.0;
+    private Double priceItem = 0.0;
+    private Double priceHour = 0.0;
+    private Double expensesTextView = 0.0;
+    private Double profitTextView = 0.0;
+    private Double togetherTextView = 0.0;
 
-    public OverallProfit(Double costsTextView,
-                         Double salaryTextView,
-                         Double bonusTextView,
-                         Double supplementTextView,
-                         Double priceItem,
-                         Double priceHour,
-                         Double expensesTextView,
-                         Double profitTextView,
-                         Double togetherTextView) {
-        this.costsTextView = costsTextView;
-        this.salaryTextView = salaryTextView;
-        this.bonusTextView = bonusTextView;
-        this.supplementTextView = supplementTextView;
-        this.priceItem = priceItem;
-        this.priceHour = priceHour;
-        this.expensesTextView = expensesTextView;
-        this.profitTextView = profitTextView;
-        this.togetherTextView = togetherTextView;
-    }
+    public OverallProfit(){}
 
     public Double getCostsTextView() { return costsTextView; }
     public void setCostsTextView(Double costsTextView) { this.costsTextView = costsTextView; }

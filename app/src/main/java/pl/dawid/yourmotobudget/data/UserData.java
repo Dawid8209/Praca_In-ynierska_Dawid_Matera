@@ -14,8 +14,8 @@ public class UserData {
     private String vin;
     private String task;
     private String buyItem;
-    private Double priceItem;
-    private Double priceHour;
+    private Double priceItem = 0.0;
+    private Double priceHour = 0.0;
     private String email;
     private String imagePath;
 
