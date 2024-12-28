@@ -24,7 +24,7 @@ public class OverallProfitAdapter extends RecyclerView.Adapter<OverallProfitAdap
     private String currentMonth = getCurrentMonth();
 
     private String getCurrentMonth() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.forLanguageTag("en-EN"));
         return sdf.format(new Date());
     }
 

@@ -62,7 +62,7 @@ public class Create extends AppCompatActivity {
                 Toast.makeText(this, "Wszystkie pola są wymagane!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            /*/
+
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 Toast.makeText(this, "Podaj poprawny adres e-mail!", Toast.LENGTH_SHORT).show();
                 return;
@@ -96,7 +96,7 @@ public class Create extends AppCompatActivity {
             if (!haslo.matches(".*[!@#\\$%^&*].*")) {
                 Toast.makeText(this, "Hasło musi zawierać co najmniej jeden znak specjalny (!@#$%^&*)!", Toast.LENGTH_SHORT).show();
                 return;
-            } /*/
+            }
 
             new Thread(() -> {
                 ContactDatabase db = ContactDatabase.getInstance(getApplicationContext());
