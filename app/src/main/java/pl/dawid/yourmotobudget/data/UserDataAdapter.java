@@ -85,9 +85,9 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.UserDa
         });
 
         if (userData.getImagePath() != null && !userData.getImagePath().isEmpty()) {
-            File imgFile = new File(userData.getImagePath());
-            if(imgFile.exists()){
-                Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            File imageFile = new File(userData.getImagePath());
+            if(imageFile.exists()){
+                Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 holder.imageView.setImageBitmap(bitmap);
             }else {
                 Log.e("ImageLoader", "Plik nie istnieje: " + userData.getImagePath());

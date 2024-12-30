@@ -79,8 +79,8 @@ public class List3_1 extends AppCompatActivity {
             }
         });
 
-        /*dynamicFieldsContainer = findViewById(R.id.dynamicContainer);
-        Button addItemButton = findViewById(R.id.addItemButton);
+        dynamicFieldsContainer = findViewById(R.id.dynamicContainer);
+        //Button addItemButton = findViewById(R.id.addItemButton);
         
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -89,7 +89,7 @@ public class List3_1 extends AppCompatActivity {
                     REQUEST_CAMERA_PERMISSION);
         }
 
-        // Obsługa przycisku dodawania pozycji
+        /* Obsługa przycisku dodawania pozycji
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,13 +146,13 @@ public class List3_1 extends AppCompatActivity {
 
             if (!priceItemFieldString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
 
-                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena zakupionych przedmiotów!", Toast.LENGTH_SHORT).show());
                 return;
             }
 
             if (!priceHourFieldString.matches("^[0-9]+([.,][0-9]{1,2})?$")) {
 
-                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena!", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(this, "Nieprawidłowa cena za roboczogodzine!", Toast.LENGTH_SHORT).show());
                 return;
             }
 
