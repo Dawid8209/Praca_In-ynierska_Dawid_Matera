@@ -12,12 +12,6 @@
         android:scaleType="fitCenter"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/dateHeader"
-            layout="@layout/date_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <ImageView
             android:id="@+id/myImageView"
             android:layout_width="match_parent"
@@ -96,7 +90,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:background="@drawable/rounded_edittext"
-                android:text="Cofnij"
+                android:text="Powrót"
                 android:textSize="23dp"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="15dp"

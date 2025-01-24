@@ -16,7 +16,8 @@ public interface OverallProfitDao {
             "COALESCE(SUM(priceItem), 0) AS priceItem, " +
             "COALESCE(SUM(priceHour), 0) AS priceHour " +
             "FROM (" +
-            "   SELECT costs.costsTextView, NULL AS salaryTextView, NULL AS bonusTextView, NULL AS supplementTextView, NULL AS priceItem, NULL AS priceHour " +
+            "   SELECT costs.costsTextView, NULL AS salaryTextView, NULL AS bonusTextView, " +
+            "NULL AS supplementTextView, NULL AS priceItem, NULL AS priceHour " +
             "   FROM user_costs AS costs WHERE costs.email = :userId " +
             "   UNION ALL " +
             "   SELECT NULL, salary.salaryTextView, salary.bonusTextView, salary.supplementTextView, NULL, NULL " +

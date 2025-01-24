@@ -90,6 +90,7 @@ public class BookMarks extends AppCompatActivity {
             }
         });
 
+        /*/
         Button buttonhistory = findViewById(R.id.history);
         buttonhistory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +98,7 @@ public class BookMarks extends AppCompatActivity {
                 Intent intent = new Intent(BookMarks.this, List5.class);
                 startActivity(intent);
             }
-        });
+        });/*/
 
         Button buttonBack = findViewById(R.id.logout);
         buttonBack.setOnClickListener(new View.OnClickListener() {
