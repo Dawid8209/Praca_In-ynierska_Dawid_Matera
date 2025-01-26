@@ -13,11 +13,11 @@ public interface UserSalaryDao {
     @Insert
     void insert(UserSalary UserSalary);
 
-    @Query("SELECT * FROM user_salary WHERE email = :email")
-    List<UserSalary> getUserSalaryByUserId(String email);
-
     @Update
     void update(UserSalary UserSalary);
+
+    @Query("SELECT * FROM user_salary WHERE email = :email")
+    List<UserSalary> getUserSalaryByUserId(String email);
 
     @Query("DELETE FROM user_salary WHERE id = :id")
     void deleteUserSalaryById(int id);

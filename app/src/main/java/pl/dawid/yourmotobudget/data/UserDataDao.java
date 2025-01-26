@@ -14,17 +14,14 @@ public interface UserDataDao {
     @Insert
     void insert(UserData userData);
 
-    @Query("SELECT * FROM user_data WHERE email = :email")
-    List<UserData> getUserDataByUserId(String email);
-
     @Update
     void update(UserData userData);
 
     @Delete
     void delete(UserData userData);
 
-    @Query("SELECT * FROM user_data")
-    List<UserData> getAllUserData();
+    @Query("SELECT * FROM user_data WHERE email = :email")
+    List<UserData> getUserDataByUserId(String email);
 
     @Query("DELETE FROM user_data WHERE id = :id")
     void deleteUserDataById(int id);
