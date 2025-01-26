@@ -8,9 +8,6 @@ public class OverallProfit {
     private Double supplementTextView = 0.0;
     private Double priceItem = 0.0;
     private Double priceHour = 0.0;
-    private Double expensesTextView = 0.0;
-    private Double profitTextView = 0.0;
-    private Double togetherTextView = 0.0;
 
     public OverallProfit(){}
 
@@ -31,13 +28,4 @@ public class OverallProfit {
 
     public Double getPriceHour() { return priceHour; }
     public void setPriceHour(Double priceHour) { this.priceHour = priceHour; }
-
-    public Double getExpensesTextView() { return expensesTextView; }
-    public void setExpensesTextView(Double expensesTextView) { this.expensesTextView = expensesTextView; }
-
-    public Double getProfitTextView() { return profitTextView; }
-    public void setProfitTextView(Double profitTextView) { this.profitTextView = profitTextView; }
-
-    public Double getTogetherTextView() { return togetherTextView; }
-    public void setTogetherTextView(Double togetherTextView) { this.togetherTextView = togetherTextView; }
 }
